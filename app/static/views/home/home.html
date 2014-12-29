@@ -1,0 +1,77 @@
+<div class="container-fluid" ng-controller="HomeController">
+
+    <div class="row">
+      <div class="col-md-12">
+        <!-- <select class="combobox form-control" name="horizontal" required="required"> -->
+          <!-- <option value="" selected="selected">Select a Airport</option> -->
+          <!-- <option value="32" >32</option> -->
+        <div class="panel panel-default">
+          <div class="panel-body">
+            选择机场：
+            <select ng-options="airport as airport for airport in airports" ng-model="selectedAirport">
+              <!-- <option ng-repeat="airport in airports" value="32"> -->
+                <!-- {{airport}} -->
+              <!-- </option> -->
+            </select>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-group col-md-3">
+        <span class="input-group-addon" id="basic-addon1">时</span>
+        <input type="text" ng-model='newFlight.hour' class="form-control" id="hourInput" placeholder="Hour">
+      </div>              
+
+      <div class="input-group col-md-3">
+        <span class="input-group-addon" id="basic-addon1">分</span>
+        <input type="text" ng-model='newFlight.minute' class="form-control" id="minuteInput" placeholder="Minute">
+      </div>
+
+      <div class="input-group col-md-3">
+        <span class="input-group-addon" id="basic-addon1">出口</span>
+        <input type="text" ng-model='newFlight.port' class="form-control" id="portInput" placeholder="Port">
+      </div>
+
+      <div class="col-md-3">
+        <button type="button" ng-click="onAdd()" class="btn btn-default">计算</button>
+      </div>      
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <table class="table">
+
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>时刻</th>
+                  <th>出口</th>
+                  <!-- <th>Type</th> -->
+                  <th>动作</th>
+                  <th>代价</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="flight in flights">
+                  <td>{{flight.row}}</td>
+                  <td>{{flight.time}}</td>
+                  <td>{{flight.port}}</td>
+                  <!-- <td>{{flight.type}}</td> -->
+                  <td>{{flight.action}}</td>
+                  <td>{{flight.cost}}</td>
+                </tr>
+              </tbody>
+
+            </table>
+            
+        </div>
+
+    </<div>
+
+</div>
