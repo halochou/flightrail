@@ -18,17 +18,17 @@ def airports():
 
 @app.route('/flight')
 def flight():
-    #print "flight"
-    hour, land, port = request.args['hour'],request.args['minute'],request.args['port']
-    hour, land, port = map(string.atoi, [hour, land, port])
+    hour, minute, second, port = request.args['hour'],request.args['minute'],request.args['second'],request.args['port']
+    hour, minute, second, port = map(string.atoi, [hour, minute, second, port])
     airport = request.args['airport']
-    results = decide_flight_action(hour,land,port,airport)
+    results = decide_flight_action(hour,minute,second,port,airport)
+
 
     return jsonify(results)
 
 
 
-def decide_flight_action(hour,land,port,airport):
+def decide_flight_action(hour,land,second,port,airport):
 
     DELTA = 25.0 / 60.0
 
@@ -68,6 +68,8 @@ def decide_flight_action(hour,land,port,airport):
 
     current = 0
     arr_time = "%d:%d" % (hour, land)
+    arr_time = "%02d:%02d:%02d" % (hour, (land*60+second)/60 , (land*60.0+second)%60)
+
     for r in cond[hour]:
         if (r[0] < land) and (land <= r[2]):
             if r[1] == 'W':

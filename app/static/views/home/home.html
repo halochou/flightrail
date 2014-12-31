@@ -8,12 +8,7 @@
         <div class="panel panel-default">
           <div class="panel-body">
             选择机场：
-            <select ng-options="airport as airport for airport in airports" ng-model="selectedAirport">
-              <!-- <option ng-repeat="airport in airports" value="32"> -->
-                <!-- {{airport}} -->
-              <!-- </option> -->
-            </select>
-
+            <select ng-options="airport as airport for airport in airports" ng-model="selectedAirport"></select>
           </div>
         </div>
 
@@ -21,22 +16,26 @@
     </div>
 
     <div class="row">
-      <div class="input-group col-md-3">
-        <span class="input-group-addon" id="basic-addon1">时</span>
-        <input type="text" ng-model='newFlight.hour' class="form-control" id="hourInput" placeholder="Hour">
+      <!-- <div class="input-group col-md-2">
+        <span class="input-group-addon" id="basic-addon1">时间</span>
+        <select ng-options="airport as airport for airport in airports" ng-model="selectedAirport"></select>
+      </div> -->
+
+      <div class="input-group col-md-6">
+        <span class="input-group-addon" id="basic-addon1">时间</span>
+        <input type="text" ng-model='newFlight.hour' class="form-control" id="hourInput" placeholder="00">
+        <span class="input-group-addon" id="basic-addon1">:</span>
+        <input type="text" ng-model='newFlight.minute' class="form-control" id="minuteInput" placeholder="00">
+        <span class="input-group-addon" id="basic-addon1">:</span>
+        <input type="text" ng-model='newFlight.second' class="form-control" id="hourInput" placeholder="00">
       </div>              
 
-      <div class="input-group col-md-3">
-        <span class="input-group-addon" id="basic-addon1">分</span>
-        <input type="text" ng-model='newFlight.minute' class="form-control" id="minuteInput" placeholder="Minute">
-      </div>
-
-      <div class="input-group col-md-3">
+      <div class="input-group col-md-5">
         <span class="input-group-addon" id="basic-addon1">出口</span>
-        <input type="text" ng-model='newFlight.port' class="form-control" id="portInput" placeholder="Port">
+        <input type="text" ng-model='newFlight.port' class="form-control" id="portInput" placeholder="">
       </div>
 
-      <div class="col-md-3">
+      <div class="col-md-1">
         <button type="button" ng-click="onAdd()" class="btn btn-default">计算</button>
       </div>      
     </div>
@@ -59,7 +58,8 @@
               </thead>
               <tbody>
                 <tr ng-repeat="flight in flights">
-                  <td>{{flight.row}}</td>
+                  <!-- <td>{{flight.row}}</td> -->
+                  <td>{{$index}}</td>
                   <td>{{flight.time}}</td>
                   <td>{{flight.port}}</td>
                   <!-- <td>{{flight.type}}</td> -->

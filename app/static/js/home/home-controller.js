@@ -13,20 +13,16 @@ angular.module('FlightRailsPlan')
 
     $scope.onAdd = function () {
 
-        //console.log($scope.selectedAirport);
-        $http.get('/flight',{params: {
-            hour: $scope.newFlight.hour,
-            minute: $scope.newFlight.minute,
-            port: $scope.newFlight.port,
-            airport: $scope.selectedAirport
-        }}).
+        $scope.newFlight.airport = $scope.selectedAirport;
+        // console.log($scope.newFlight);
+
+        $http.get('/flight',{params: $scope.newFlight}).
         success(function(data, status, headers, config) {
             // console.log(data)
             $scope.flights.push({
                 row  : $scope.flights.length+1,
                 time : data.time,
                 port : data.port,
-                type : 'A320',
                 action : data.action,
                 cost : data.cost + ' s'
             });
